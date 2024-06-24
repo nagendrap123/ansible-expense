@@ -1,6 +1,8 @@
 - name: configure DB server
   hosts: db 
   become: yes 
+  vars:
+    login_host: 172.31.80.165
   tasks:
   - name: install the mysql-server 
     ansible.builtin.dnf:
@@ -17,7 +19,7 @@
     community.mysql.mysql_info:
      login_user: root 
      login_password: ExpenseApp@1
-     login_host: 172.31.80.165
+     login_host: {{login_host}}
      filter: version 
      ignore_errors: yes 
      register: msql_connection_output 
