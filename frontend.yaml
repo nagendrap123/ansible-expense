@@ -14,7 +14,10 @@
      state: started 
      enabled: yes 
   - name: Delete files and directories
-    ansible.builtin.command: "rm -rf /usr/share/nginx/*.txt"
+      ansible.builtin.file:
+        path: "/usr/share/nginx/"
+        state: absent
+        recurse: yes
         
         
 
