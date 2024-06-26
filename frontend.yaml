@@ -13,8 +13,12 @@
      name: nginx
      state: started 
      enabled: yes 
-  - name: to remove nginx files 
-    ansible.builtin.command: rm -rf /usr/share/nginx/html/*
+  - name: Delete files and directories
+    ansible.builtin.file:
+        path: "/usr/share/nginx/html/{{ item }}"
+        state: absent
+        with_items:
+        - "*"
   #- name: download the frotend code 
    # ansible.builtin.get_url:
     # url: https://expense-builds.s3.us-east-1.amazonaws.com/expense-frontend-v2.zip
