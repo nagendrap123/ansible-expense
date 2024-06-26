@@ -13,7 +13,7 @@
   #- name: create the user expense 
   # ansible.builtin.command: useradd expense
   - name: install the nodejs
-    ansible.builtin.dnf:
+    ansible.builtin.package: #works for all distros
      name: nodejs
      state: installed
   - name: create the user expense
