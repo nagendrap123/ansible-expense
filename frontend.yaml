@@ -17,7 +17,7 @@
     ansible.builtin.file:
         path: "/usr/share/nginx/html/{{ item }}"
         state: absent
-        loop:
+    loop:
         - "*"
   #- name: download the frotend code 
    # ansible.builtin.get_url:
