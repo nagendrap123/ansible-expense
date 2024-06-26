@@ -14,10 +14,11 @@
      state: started 
      enabled: yes 
   - name: Delete files and directories
-    ansible.builtin.file:
-        path: "/usr/share/nginx/nag1.txt"
-        state: absent
-        
+    ansible.builtin.find:
+     paths: "/usr/share/nginx/html"
+     file_type: any 
+     recurse: true
+    register: collected_files 
         
         
 
