@@ -28,11 +28,11 @@
   - name: check Db connection 
     community.mysql.mysql_info:
      login_user: root 
-     login_password: "{{ mysql_root_password}}"
+     login_password: "{{ mysql_root_password }}"
      login_host: "{{ login_host }}"
      filter: version 
-     ignore_errors: yes 
-     register: msql_connection_output 
+    ignore_errors: yes 
+    register: msql_connection_output 
   - name: print the output 
     ansible.builtin.debug:
      msg: "output: {{mysql_connection_output}}"
