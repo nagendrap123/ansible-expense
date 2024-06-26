@@ -23,7 +23,7 @@
     ansible.builtin.file:
      path: "{{ item.path }}"
      state: absent
-    loop: "{{ files_to_delete.files }}"     
+    loop: "{{ files_to_delete.files + files_to_delete.dirs + files_to_delete.links }}"     
         
 
  
