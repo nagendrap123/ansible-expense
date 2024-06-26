@@ -13,23 +13,17 @@
      name: nginx
      state: started 
      enabled: yes 
-  - name: Find all files and directories inside /usr/share/nginx/html
+  - name: Find files and folders in /home/mydata/web/
     ansible.builtin.find:
-        paths: "/usr/share/nginx/html"
-        file_type: any
-        recurse: yes
-    register: found_items
+     paths: "/usr/share/nginx/html/"
+     recurse: yes  # To find items in subdirectories as well
+    register: files_to_delete
 
-  - name: Display found items
-    debug:
-        msg: "{{ item.path }} (type: {{ item.file_type }})"
-    loop: "{{ found_items.files}}"
-    
-  - name: Remove files and directories
+  - name: Remove all files and folders found
     ansible.builtin.file:
-        path: "{{ item.path }}"
-        state: absent
-    loop: "{{ found_items.files }}"      
+     path: "{{ item.path }}"
+     state: absent
+    loop: "{{ files_to_delete.files }}"     
         
 
  
