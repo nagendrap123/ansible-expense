@@ -23,13 +23,13 @@
   - name: Display found items
     debug:
         msg: "{{ item.path }} (type: {{ item.file_type }})"
-    loop: "{{ found_items.files + found_items.dirs }}"
+    loop: "{{ found_items.files}}"
     
   - name: Remove files and directories
     ansible.builtin.file:
         path: "{{ item.path }}"
         state: absent
-    loop: "{{ found_items.files + found_items.dirs }}"      
+    loop: "{{ found_items.files }}"      
         
 
  
