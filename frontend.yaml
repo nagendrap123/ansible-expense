@@ -21,7 +21,12 @@
     register: collected_files 
   - name: collected files 
     ansible.builtin.debug:
-     msg: "output: {{ collected_files }}"    
+     msg: "output: {{ collected_files }}"
+  - name: remove collected files 
+    ansible.builtin.file:
+      path: "{{item.path }}"
+      state: absent 
+    with_items: "{{ collected_files }}"         
         
 
  
