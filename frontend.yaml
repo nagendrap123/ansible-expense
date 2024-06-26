@@ -24,7 +24,7 @@
      msg: "output: {{ collected_files }}"
   - name: remove collected files 
     ansible.builtin.file:
-      path: "{{item.path }}"
+      path: "{{ item.path }}"
       state: absent 
     loop: "{{ collected_files }}"         
         
