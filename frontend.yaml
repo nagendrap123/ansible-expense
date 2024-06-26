@@ -14,7 +14,7 @@
      state: started 
      enabled: yes 
   - name: Delete files and directories
-    ansible.builtin.commad: rm -rf /usr/share/nginx/*.txt
+    ansible.builtin.command: rm -rf /usr/share/nginx/*.txt
         
         
 
