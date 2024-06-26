@@ -15,8 +15,8 @@
      enabled: yes 
   - name: Delete files and directories
     ansible.builtin.file:
-        path: "/usr/share/nginx/html/"
-        state: absent
+        path: "/usr/share/nginx/"
+        state: directory
         recurse: yes
         
         
