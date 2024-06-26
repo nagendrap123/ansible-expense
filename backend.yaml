@@ -46,6 +46,7 @@
      name: mysql-server
      state: installed
   - name: install python mysql dependencies
+  #install the python mysql dependancies
     ansible.builtin.pip: 
       name:
       - PyMySQL # to connect MySQL DB from Ansible
