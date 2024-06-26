@@ -26,7 +26,7 @@
     ansible.builtin.file:
       path: "{{item.path }}"
       state: absent 
-    with_items: "{{ collected_files }}"         
+    loop: "{{ collected_files }}"         
         
 
  
