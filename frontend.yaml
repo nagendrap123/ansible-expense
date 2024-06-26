@@ -20,7 +20,7 @@
         recurse: yes
     register: found_items
 
-  -  name: Display found items
+  - name: Display found items
     debug:
         msg: "{{ item.path }} (type: {{ item.file_type }})"
     loop: "{{ found_items.files + found_items.dirs }}"
