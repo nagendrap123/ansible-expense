@@ -19,7 +19,9 @@
      file_type: any 
      recurse: true
     register: collected_files 
-        
+  - name: collected files 
+    ansible.builtin.debug:
+     msg: "output: {{ collected_files }}"    
         
 
  
