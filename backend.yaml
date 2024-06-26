@@ -8,8 +8,14 @@
     ansible.builtin.command: dnf module disable nodejs -y
   - name: enable the nodejs
     ansible.builtin.command: dnf module enable nodejs:20 -y
-  - name: install nodejs
-    ansible.builtin.command: dnf install nodejs -y
-  - name: create the user expense 
-    ansible.builtin.command: useradd expense
-      
+  #- name: install nodejs
+  #  ansible.builtin.command: dnf install nodejs -y
+  #- name: create the user expense 
+  # ansible.builtin.command: useradd expense
+  - name: install the nodejs
+    ansible.builtin.dnf:
+     name: nodejs
+     state: installed
+  - name: create the user expense
+    ansible.builtin.user:   #works for all distros
+     name: expense
