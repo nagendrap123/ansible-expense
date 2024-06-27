@@ -13,17 +13,23 @@
      name: nginx
      state: started 
      enabled: yes 
-  - name: Find files and folders in /home/mydata/web/
-    ansible.builtin.find:
-     paths: "/usr/share/nginx/html/"
-     recurse: yes  # To find items in subdirectories as well
-    register: files_to_delete
-
-  - name: Remove all files and folders found
+  - name: delete the files and folders 
     ansible.builtin.file:
-     path: "{{ item.path }}"
-     state: absent
-    loop: "{{ files_to_delete.files + files_to_delete.dirs + files_to_delete.links }}"     
+     path: /usr/share/nginx/html
+     state: absent 
+  - name: create a directory
+    ansible.builtin.file:
+     path: /usr/share/nginx/html
+     state: directory
+  - name: download the frotend code 
+    ansible.builtin.get_url:
+     url: https://expense-builds.s3.us-east-1.amazonaws.com/expense-frontend-v2.zip
+     dest: /tmp/frontend.zip
+  - name: extarct the frontend code 
+    ansible.builtin.unarchive:
+     src: /tmp/frontend.zip
+     dest: /usr/share/nginx/html
+     remote_src: yes          
         
 
  
